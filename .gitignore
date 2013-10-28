@@ -37,3 +37,10 @@ nosetests.xml
 
 # Secret settings
 magtenbolle_live/secret_settings.py
+
+# Don't copy database
+storage.db
+
+# Vim swap files
+*swp
+
