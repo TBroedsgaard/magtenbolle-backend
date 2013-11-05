@@ -8,5 +8,6 @@ class CustomerResource(ModelResource):
     class Meta:
         queryset = Customer.objects.all()
         resource_name = "customer"
+	fields = ["name"]
         authentication = ApiKeyAuthentication()
         authorization = DjangoAuthorization()
