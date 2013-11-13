@@ -39,11 +39,21 @@ class Bike(models.Model):
         return "{0.id}: {0.Type} {0.Size} {0.Price}".format(self)
 
 
+class Payment(models.Model):
+    Amount = models.DecimalField(max_digits=8, decimal_places=2)
+    Type = models.CharField(max_length=50)
+    Accepted = models.BooleanField()
+
+    def __unicode__(self):
+        return "{0.id}: {0.Amount} {0.Type} {0.Accepted}".format(self)
+
+
 class Checkin(models.Model):
     DateTime = models.DateTimeField()
     ContactPerson = models.ForeignKey(ContactPerson)
     Customers = models.ManyToManyField(Customer, blank=True)
     Bikes = models.ManyToManyField(Bike, blank=True)
+    Payment = models.OneToOneField(Payment)
 
     def __unicode__(self):
         return "{0.id}: {0.DateTime} {0.ContactPerson}".format(self)

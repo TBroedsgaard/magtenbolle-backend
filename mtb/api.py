@@ -1,4 +1,4 @@
-from mtb.models import ContactPerson, Customer, Bike, Checkin
+from mtb.models import ContactPerson, Customer, Bike, Checkin, Payment
 from tastypie.resources import ModelResource
 from tastypie.authentication import ApiKeyAuthentication
 from tastypie.authorization import DjangoAuthorization
@@ -29,6 +29,14 @@ class BikeResource(ModelResource):
         authorization = DjangoAuthorization()
 
 
+class PaymentResource(ModelResource):
+    class Meta:
+        queryset = Payment.objects.all()
+        resource_name = "payment"
+        authentication = ApiKeyAuthentication()
+        authorization = DjangoAuthorization()
+
+
 class CheckinResource(ModelResource):
     # Customer: Name of Field (can be anything)
     # fields.ToOneField: same as ForeignKey
@@ -39,6 +47,7 @@ class CheckinResource(ModelResource):
     ContactPerson = fields.ToOneField(ContactPersonResource,
                                       "ContactPerson", null=True)
     Customers = fields.ToManyField(CustomerResource, "Customers")
+    Payment = fields.ToOneField(PaymentResource, "Payment")
 
     class Meta:
         queryset = Checkin.objects.all()
