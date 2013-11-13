@@ -1,22 +1,22 @@
-from mtb.models import Customer, Participant, Bike, Registration
+from mtb.models import ContactPerson, Customer, Bike, Checkin
 from tastypie.resources import ModelResource
 from tastypie.authentication import ApiKeyAuthentication
 from tastypie.authorization import DjangoAuthorization
 from tastypie import fields
 
 
-class CustomerResource(ModelResource):
+class ContactPersonResource(ModelResource):
     class Meta:
-        queryset = Customer.objects.all()
-        resource_name = "customer"
+        queryset = ContactPerson.objects.all()
+        resource_name = "contactperson"
         authentication = ApiKeyAuthentication()
         authorization = DjangoAuthorization()
 
 
-class ParticipantResource(ModelResource):
+class CustomerResource(ModelResource):
     class Meta:
-        queryset = Participant.objects.all()
-        resource_name = "participant"
+        queryset = Customer.objects.all()
+        resource_name = "customer"
         authentication = ApiKeyAuthentication()
         authorization = DjangoAuthorization()
 
@@ -29,18 +29,19 @@ class BikeResource(ModelResource):
         authorization = DjangoAuthorization()
 
 
-class RegistrationResource(ModelResource):
+class CheckinResource(ModelResource):
     # Customer: Name of Field (can be anything)
     # fields.ToOneField: same as ForeignKey
     # CustomerResource: The resource it maps to
     # "Customer": The attribute on the Registration model - must match what is
     # in models.py!!
     # null=True: If true, it won't fail on no customers
-    Customer = fields.ToOneField(CustomerResource, "Customer", null=True)
-    Participants = fields.ToManyField(ParticipantResource, "Participants")
+    ContactPerson = fields.ToOneField(ContactPersonResource,
+                                      "ContactPerson", null=True)
+    Customers = fields.ToManyField(CustomerResource, "Customers")
 
     class Meta:
-        queryset = Registration.objects.all()
-        resource_name = "registration"
+        queryset = Checkin.objects.all()
+        resource_name = "checkin"
         authentication = ApiKeyAuthentication()
         authorization = DjangoAuthorization()

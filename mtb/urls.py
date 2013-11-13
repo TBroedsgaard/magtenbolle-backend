@@ -1,10 +1,10 @@
 from django.conf.urls import patterns, include, url
-from mtb.api import CustomerResource, RegistrationResource, ParticipantResource, BikeResource
+from mtb.api import ContactPersonResource, CustomerResource, BikeResource, CheckinResource
 
+contactperson_resource = ContactPersonResource()
 customer_resource = CustomerResource()
-participant_resource = ParticipantResource()
 bike_resource = BikeResource()
-registration_resource = RegistrationResource()
+checkin_resource = CheckinResource()
 
 
 # Uncomment the next two lines to enable the admin:
@@ -13,8 +13,8 @@ registration_resource = RegistrationResource()
 
 urlpatterns = patterns('',
         url(r"^customers/$", "mtb.views.customers"),
+        url(r"^api/", include(contactperson_resource.urls)),
         url(r"^api/", include(customer_resource.urls)),
-        url(r"^api/", include(participant_resource.urls)),
         url(r"^api/", include(bike_resource.urls)),
-        url(r"^api/", include(registration_resource.urls)),
+        url(r"^api/", include(checkin_resource.urls)),
 )

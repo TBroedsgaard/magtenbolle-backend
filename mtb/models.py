@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 models.signals.post_save.connect(create_api_key, sender=User)
 
 
-class Customer(models.Model):
+class ContactPerson(models.Model):
     FirstName = models.CharField(max_length=200)
     SurName = models.CharField(max_length=200)
     Email = models.EmailField(max_length=254)
@@ -20,7 +20,7 @@ class Customer(models.Model):
         return "{0.id}: {0.FirstName} {0.SurName}".format(self)
 
 
-class Participant(models.Model):
+class Customer(models.Model):
     FirstName = models.CharField(max_length=200)
     SurName = models.CharField(max_length=200)
     Age = models.IntegerField()
@@ -39,11 +39,11 @@ class Bike(models.Model):
         return "{0.id}: {0.Type} {0.Size} {0.Price}".format(self)
 
 
-class Registration(models.Model):
+class Checkin(models.Model):
     DateTime = models.DateTimeField()
-    Customer = models.ForeignKey(Customer)
-    Participants = models.ManyToManyField(Participant, blank=True)
+    ContactPerson = models.ForeignKey(ContactPerson)
+    Customers = models.ManyToManyField(Customer, blank=True)
     Bikes = models.ManyToManyField(Bike, blank=True)
 
     def __unicode__(self):
-        return "{0.id}: {0.DateTime} {0.Customer}".format(self)
+        return "{0.id}: {0.DateTime} {0.ContactPerson}".format(self)

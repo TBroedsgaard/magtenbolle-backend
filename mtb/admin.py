@@ -1,7 +1,7 @@
 from django.contrib import admin
-from mtb.models import Customer, Participant, Bike, Registration
+from mtb.models import ContactPerson, Customer, Bike, Checkin
 
+admin.site.register(ContactPerson)
 admin.site.register(Customer)
-admin.site.register(Participant)
 admin.site.register(Bike)
-admin.site.register(Registration)
+admin.site.register(Checkin)
