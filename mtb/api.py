@@ -38,15 +38,16 @@ class PaymentResource(ModelResource):
 
 
 class CheckinResource(ModelResource):
-    # Customer: Name of Field (can be anything)
+    # ContactPerson: Name of Field (can be anything)
     # fields.ToOneField: same as ForeignKey
-    # CustomerResource: The resource it maps to
-    # "Customer": The attribute on the Registration model - must match what is
-    # in models.py!!
+    # ContactPersonResource: The resource it maps to
+    # "ContactPerson": The attribute on the Registration model - must match
+    # what is in models.py!!
     # null=True: If true, it won't fail on no customers
     ContactPerson = fields.ToOneField(ContactPersonResource,
-                                      "ContactPerson", null=True)
-    Customers = fields.ToManyField(CustomerResource, "Customers")
+                                      "ContactPerson")
+    Customers = fields.ToManyField(CustomerResource, "Customers", null=True)
+    Bikes = fields.ToManyField(BikeResource, "Bikes", null=True)
     Payment = fields.ToOneField(PaymentResource, "Payment")
 
     class Meta:
