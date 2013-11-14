@@ -11,8 +11,7 @@ class ContactPerson(models.Model):
     SurName = models.CharField(max_length=200)
     Email = models.EmailField(max_length=254)
     PhoneNumber = models.CharField(max_length=20)
-    Street = models.CharField(max_length=200)
-    StreetNumber = models.CharField(max_length=10)
+    Address = models.CharField(max_length=200)
     Age = models.IntegerField()
     Weight = models.IntegerField()
 
