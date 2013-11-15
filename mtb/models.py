@@ -30,12 +30,12 @@ class Customer(models.Model):
 
 
 class Bike(models.Model):
-    Size = models.CharField(max_length=20)
+    MaxWeight = models.IntegerField()
     Type = models.CharField(max_length=50)
     Price = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __unicode__(self):
-        return "{0.id}: {0.Type} {0.Size} {0.Price}".format(self)
+        return "{0.id}: {0.Type} {0.MaxWeight} {0.Price}".format(self)
 
 
 class Payment(models.Model):
