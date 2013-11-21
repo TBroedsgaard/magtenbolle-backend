@@ -44,10 +44,12 @@ class CheckinResource(ModelResource):
     # "ContactPerson": The attribute on the Registration model - must match
     # what is in models.py!!
     # null=True: If true, it won't fail on no customers
-    ContactPerson = fields.ToOneField(ContactPersonResource, "ContactPerson")
-    Customers = fields.ToManyField(CustomerResource, "Customers", null=True)
-    Bikes = fields.ToManyField(BikeResource, "Bikes", null=True)
-    Payment = fields.ToOneField(PaymentResource, "Payment")
+    ContactPerson = fields.ToOneField(ContactPersonResource, "ContactPerson",
+                                      full=True)
+    Customers = fields.ToManyField(CustomerResource, "Customers", null=True,
+                                   full=True)
+    Bikes = fields.ToManyField(BikeResource, "Bikes", null=True, full=True)
+    Payment = fields.ToOneField(PaymentResource, "Payment", full=True)
 
     class Meta:
         queryset = Checkin.objects.all()
