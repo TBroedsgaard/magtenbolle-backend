@@ -14,6 +14,8 @@ class ContactPerson(models.Model):
     Address = models.CharField(max_length=200)
     Age = models.IntegerField()
     Weight = models.IntegerField()
+    NeedsBike = models.BooleanField()
+    Dcumember = models.BooleanField()
 
     def __unicode__(self):
         return "{0.id}: {0.FirstName} {0.SurName}".format(self)
@@ -24,6 +26,8 @@ class Customer(models.Model):
     SurName = models.CharField(max_length=200)
     Age = models.IntegerField()
     Weight = models.IntegerField()
+    NeedsBike = models.BooleanField()
+    Dcumember = models.BooleanField()
 
     def __unicode__(self):
         return "{0.id}: {0.FirstName} {0.SurName}".format(self)
@@ -33,6 +37,7 @@ class Bike(models.Model):
     MaxWeight = models.IntegerField()
     Type = models.CharField(max_length=50)
     Price = models.DecimalField(max_digits=5, decimal_places=2)
+    IsTaken = models.BooleanField()
 
     def __unicode__(self):
         return "{0.id}: {0.Type} {0.MaxWeight} {0.Price}".format(self)
