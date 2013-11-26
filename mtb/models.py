@@ -6,6 +6,10 @@ from django.contrib.auth.models import User
 models.signals.post_save.connect(create_api_key, sender=User)
 
 
+class Dummy(models.Model):
+    Name = models.CharField(max_length=200)
+
+
 class ContactPerson(models.Model):
     FirstName = models.CharField(max_length=200)
     SurName = models.CharField(max_length=200)
