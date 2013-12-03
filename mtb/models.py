@@ -10,6 +10,11 @@ class Dummy(models.Model):
     Name = models.CharField(max_length=200)
 
 
+class Dimmy(models.Model):
+    Fancy = models.CharField(max_length=200)
+    Dummy = models.ForeignKey(Dummy)
+
+
 class ContactPerson(models.Model):
     FirstName = models.CharField(max_length=200)
     SurName = models.CharField(max_length=200)

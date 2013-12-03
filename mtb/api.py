@@ -1,4 +1,4 @@
-from mtb.models import ContactPerson, Customer, Bike, Checkin, Payment, Dummy
+from mtb.models import ContactPerson, Customer, Bike, Checkin, Payment, Dummy, Dimmy
 from tastypie.resources import ModelResource
 from tastypie.authentication import ApiKeyAuthentication
 from tastypie.authorization import DjangoAuthorization
@@ -9,6 +9,18 @@ class DummyResource(ModelResource):
     class Meta:
         queryset = Dummy.objects.all()
         resource_name = "dummy"
+        authentication = ApiKeyAuthentication()
+        authorization = DjangoAuthorization()
+
+
+class DimmyResource(ModelResource):
+    Dummy = fields.ToOneField(DummyResource, "Dummy", full=True)
+
+    class Meta:
+        queryset = Dimmy.objects.all()
+        resource_name = "dimmy"
+        authentication = ApiKeyAuthentication()
+        authorization = DjangoAuthorization()
 
 
 class ContactPersonResource(ModelResource):
