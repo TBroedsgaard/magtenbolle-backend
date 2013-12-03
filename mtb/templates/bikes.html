@@ -6,7 +6,7 @@
 
     {% for bike in bikes %}
 
-        <li>{{ bike.IsTaken }}</li>
+        <li>{{ bike.Id }}: {{ bike.Type }} | {{ bike.IsTaken }}</li>
 
     {% endfor %}
     </ul>
