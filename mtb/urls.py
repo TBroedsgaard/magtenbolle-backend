@@ -14,6 +14,7 @@ dimmy_resource = DimmyResource()
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+        url(r"^$", "mtb.views.status"),
         url(r"^customers/$", "mtb.views.customers"),
         url(r"^bikes/$", "mtb.views.bikes"),
         url(r"^api/", include(contactperson_resource.urls)),

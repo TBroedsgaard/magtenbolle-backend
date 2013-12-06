@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Welcome to Magtenbølle MTB!</h1>
+    <h2>This is the status page</h2>
+    <p>Bikes currently available: {{ available_bikes }}/{{ bikes.count }}</p>
+    <p>Visitors today: {{ visitors_today }}</p>
+    <p>Total visitors: {{ total_visitors }}</p>
+{% endblock %}
